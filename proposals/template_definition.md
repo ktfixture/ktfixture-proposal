@@ -1,4 +1,4 @@
-# Template Defination
+# Template Definition
 
 * **Type**: Design proposal
 * **Author**: Vinicius Moleta, Tiarê Balbi
@@ -7,7 +7,8 @@
 
 ## Use cases
 * Define one or more templates for a specific type to describe different usage scenarios;
-* Usage of a specific template for a specific type in a test case.
+* Template re-usage;
+* Template customization with action such as using (inserting or replacing a property value) and excluding(removing property from the template).
 
 ## Description
 Templates are a definition of a data structure to a specific model allowing you to create multiple combinations of data.
@@ -22,7 +23,7 @@ Fixture.define<Client> {
 
     template { "invalid-user-template", {
         copying {"valid-user-template", {
-            field("name" withValue "Brian")
+            using("name" withValue "Brian")
         }}
     })
 }
