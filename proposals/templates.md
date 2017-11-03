@@ -1,4 +1,4 @@
-# Template Usage
+# Template
 
 * **Type**: Design proposal
 * **Author**: Vinicius Moleta, Tiarê Balbi
