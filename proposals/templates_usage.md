@@ -37,7 +37,7 @@ fun `should create a single user` () {
         using("name" withValue "John {index}")
     }}.single()
 
-  assertEquals("John 0", client.name)
+  service.doSomething(client)
 }
 
 @Test
@@ -46,20 +46,16 @@ fun `should not require defining the type in the method if the return is defined
         using("name" withValue "John {index}")
     }}.single()
 
-  assertEquals("John 0", client.name)
+    service.doSomething(client)
 }
 
 @Test
 fun `should create a list of client`() {
-    val client: List<Client> = Fixture.prepare<Client> {"template-name", {
+    val clients: List<Client> = Fixture.prepare<Client> {"template-name", {
         using("name" withValue "John {index}")
     }}.multiple(5)
 
-    assertEquals("John 0", client[0].name)
-    assertEquals("John 1", client[1].name)
-    assertEquals("John 2", client[2].name)
-    assertEquals("John 3", client[3].name)
-    assertEquals("John 4", client[4].name)
+    service.save(clients)
 }
 
 @Test
@@ -69,14 +65,10 @@ fun `should be able to re-use the definition to fetch multiple times`() {
     }}
 
     val client: Client = definition.single()
-    assertEquals("John 0", client.name)
+    service.doSomething(client)
 
     val clients: List<Client> = definition.multiple(5)
-    assertEquals("John 0", client[0].name)
-    assertEquals("John 1", client[1].name)
-    assertEquals("John 2", client[2].name)
-    assertEquals("John 3", client[3].name)
-    assertEquals("John 4", client[4].name)
+    service.doSomethingElse(clients)
 }
 
 ```
