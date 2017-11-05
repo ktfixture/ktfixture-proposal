@@ -19,7 +19,7 @@ fun `assert operation result with expected value`() {
       using("name" withValue "John from {address.city}")
     }}.single()
 
-    val output: Client = Operation.resetAddress(input);
+    val output: Client = Operation.resetAddress(input)
 
     Fixture.Assert.that(output).isEqualsTo(input) {
       using("name" withValue "John without address")
