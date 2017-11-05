@@ -6,21 +6,19 @@
 * **Prototype**: To Do
 
 ## Use cases
-* Based on an object type and a template name I want to fetch a list of object of that type;
+* Based on an object type and a template name I want to generate a list of object of that type;
 * Allow you to re-use test data created to a specific model using different cases (template name);
 * Allow you to customize a field in a pre-defined template;
 * Be able to get a single object using a class type and the template name;
 * Be able to get a list of objects using a class type and the template name;
-* Customization such as using (replacing a field with an expression or a value) and 
-excluding(removing the definition from the template) can be used at the moment to get the data.
+* Customization of the generated data through actions such as "using" and "excluding".
 
 ## Description
 The main goal in the usage of templates is to allow you re-use a pre-defined data model across your all your tests.
 
 ***Actions:***
-* ***using***: allow you to override a field expression in a template;
-* ***copying***: copy a field expression from an external template;
-* ***excluding***: remove the field expression from the template.
+* ***using***: allow you to override a field value in a template;
+* ***excluding***: remove the field value from the template.
 
 ***Helpers:***
 * _{index}_: Is a property that can be used in a value expression representing the index number, 
