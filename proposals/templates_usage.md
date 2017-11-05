@@ -21,7 +21,7 @@ The main goal in the usage of templates is to allow you re-use a pre-defined dat
 * ***excluding***: remove the field value from the template.
 
 ***Helpers:***
-* _{index}_: Is a property that can be used in a value expression representing the index number, 
+* _{index}_: Is a property that can be used in a value expression representing the index number,
 if you fetch a single object the default value is 0.
 
 ***Notes:***
@@ -34,25 +34,25 @@ if you fetch a single object the default value is 0.
 @Test
 fun `should create a single user` () {
   val client = Fixture.prepare<Client> {"template-name", {
-        using("name" to "John {index}")
+        using("name" withValue "John {index}")
     }}.single()
-    
+
   assertEquals("John 0", client.name)
 }
 
 @Test
 fun `should not require defining the type in the method if the return is defined` () {
   val client: Client = Fixture.prepare {"template-name", {
-        using("name" to "John {index}")
+        using("name" withValue "John {index}")
     }}.single()
-    
+
   assertEquals("John 0", client.name)
 }
 
 @Test
 fun `should create a list of client`() {
     val client: List<Client> = Fixture.prepare<Client> {"template-name", {
-        using("name" to "John {index}")
+        using("name" withValue "John {index}")
     }}.multiple(5)
 
     assertEquals("John 0", client[0].name)
@@ -64,14 +64,14 @@ fun `should create a list of client`() {
 
 @Test
 fun `should be able to re-use the definition to fetch multiple times`() {
-    val defination = Fixture.prepare<Client> {"template-name", {
-        using("name" to "John {index}")
+    val definition = Fixture.prepare<Client> {"template-name", {
+        using("name" withValue "John {index}")
     }}
 
-    val client: Client = defination.single()
+    val client: Client = definition.single()
     assertEquals("John 0", client.name)
-    
-    val clients: List<Client> = defination.multiple(5)
+
+    val clients: List<Client> = definition.multiple(5)
     assertEquals("John 0", client[0].name)
     assertEquals("John 1", client[1].name)
     assertEquals("John 2", client[2].name)
