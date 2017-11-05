@@ -6,7 +6,7 @@
 * **Prototype**: To Do
 
 ## Use cases
-* Should allow us to define a new property in your class using delegate and a template name;
+* Given a selected type of a desired property the delegate can provide you an object or a list of objects of the selected type by using a template and actions applied over the same template;
 * Should allow us to use action before creating the instances.
 
 ## Description
