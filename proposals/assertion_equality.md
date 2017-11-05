@@ -16,7 +16,7 @@ Every time you want to assert equality on fields, you can use this feature to av
 ***Actions:***
  * ***using***: override a field value for the assertion;
  * ***excluding***: don't consider this field in the assertion.
- 
+
 ***Notes:***
  * Assertion actions won't affect the objects being compared, only the assertion itself.
 
@@ -39,13 +39,13 @@ fun `assert operation result with expected value`() {
 @Test
 fun `assert operation result with expected value as list`() {
     val input: List<Client> = Fixture.prepare<Client> { "template-name" {
-      using("name" withValue "John from {address.city}")
+      using("name" withValue "John {index} from {address.city}")
     }}.multiple(5)
 
     val output: List<Client> = Operation.resetAddress(input)
 
     Fixture.Assert.that(output).isEqualsTo(input) {
-      using("name" withValue "John without address")
+      using("name" withValue "John {index}")
       excluding(["address"])
     }
 }
